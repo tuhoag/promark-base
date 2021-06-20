@@ -1,0 +1,10 @@
+FROM redis:6
+RUN apt update -y
+RUN apt install -y curl
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt install nodejs -y
+WORKDIR /src
+RUN npm install --global yarn
+RUN yarn install
+EXPOSE 3000
+CMD node index.js
